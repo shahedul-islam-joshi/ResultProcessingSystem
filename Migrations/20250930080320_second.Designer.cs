@@ -11,8 +11,8 @@ using ResultProcessingSystem.Data;
 namespace ResultProcessingSystem.Migrations
 {
     [DbContext(typeof(StudentDbContext))]
-    [Migration("20250929183056_first_migration")]
-    partial class first_migration
+    [Migration("20250930080320_second")]
+    partial class second
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,8 +38,8 @@ namespace ResultProcessingSystem.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Registration")
-                        .HasColumnType("int");
+                    b.Property<long>("Registration")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Session")
                         .HasColumnType("nvarchar(max)");

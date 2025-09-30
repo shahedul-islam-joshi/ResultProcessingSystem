@@ -1,6 +1,6 @@
 ﻿namespace ResultProcessingSystem.Models.ViewModel
 {
-    public class AddStudentRequest
+    public class EditStudentRequest
     {
         public int Id { get; set; }  // Primary key for DB
         public long Registration { get; set; }  // Student registration number

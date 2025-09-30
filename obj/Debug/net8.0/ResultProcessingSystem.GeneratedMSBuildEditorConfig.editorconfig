@@ -32,6 +32,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TdHVkZW50XEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/.NET project/ResultProcessingSystem/Views/AdminStudent/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TdHVkZW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/.NET project/ResultProcessingSystem/Views/AdminStudent/List.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5TdHVkZW50XExpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

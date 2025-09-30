@@ -5,7 +5,7 @@
 namespace ResultProcessingSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class first_migration : Migration
+    public partial class second : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -16,7 +16,7 @@ namespace ResultProcessingSystem.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Registration = table.Column<int>(type: "int", nullable: false),
+                    Registration = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Department = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Session = table.Column<string>(type: "nvarchar(max)", nullable: true)

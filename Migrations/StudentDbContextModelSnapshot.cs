@@ -35,8 +35,8 @@ namespace ResultProcessingSystem.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Registration")
-                        .HasColumnType("int");
+                    b.Property<long>("Registration")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Session")
                         .HasColumnType("nvarchar(max)");
