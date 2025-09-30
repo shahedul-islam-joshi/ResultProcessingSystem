@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\.NET project\\ResultProcessingSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|e:\\.net project\\resultprocessingsystem\\controllers\\adminstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|solutionrelative:controllers\\adminstudentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|e:\\.net project\\resultprocessingsystem\\views\\adminstudent\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|solutionrelative:views\\adminstudent\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|e:\\.net project\\resultprocessingsystem\\views\\adminstudent\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|solutionrelative:views\\adminstudent\\add.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|e:\\.net project\\resultprocessingsystem\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|e:\\.net project\\resultprocessingsystem\\models\\domain\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|solutionrelative:models\\domain\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|e:\\.net project\\resultprocessingsystem\\models\\viewmodel\\addstudentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|solutionrelative:models\\viewmodel\\addstudentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|e:\\.net project\\resultprocessingsystem\\data\\studentdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{73A44909-BDED-4E02-A207-04713506C0F2}|ResultProcessingSystem.csproj|solutionrelative:data\\studentdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "List.cshtml",
+              "DocumentMoniker": "E:\\.NET project\\ResultProcessingSystem\\Views\\AdminStudent\\List.cshtml",
+              "RelativeDocumentMoniker": "Views\\AdminStudent\\List.cshtml",
+              "ToolTip": "E:\\.NET project\\ResultProcessingSystem\\Views\\AdminStudent\\List.cshtml",
+              "RelativeToolTip": "Views\\AdminStudent\\List.cshtml",
+              "ViewState": "AgIAABAAAAAAAAAAAAAIwCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T19:27:32.032Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AddStudentRequest.cs",
+              "DocumentMoniker": "E:\\.NET project\\ResultProcessingSystem\\Models\\ViewModel\\AddStudentRequest.cs",
+              "RelativeDocumentMoniker": "Models\\ViewModel\\AddStudentRequest.cs",
+              "ToolTip": "E:\\.NET project\\ResultProcessingSystem\\Models\\ViewModel\\AddStudentRequest.cs",
+              "RelativeToolTip": "Models\\ViewModel\\AddStudentRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T08:23:13.424Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Add.cshtml",
+              "DocumentMoniker": "E:\\.NET project\\ResultProcessingSystem\\Views\\AdminStudent\\Add.cshtml",
+              "RelativeDocumentMoniker": "Views\\AdminStudent\\Add.cshtml",
+              "ToolTip": "E:\\.NET project\\ResultProcessingSystem\\Views\\AdminStudent\\Add.cshtml",
+              "RelativeToolTip": "Views\\AdminStudent\\Add.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T07:04:35.726Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Student.cs",
+              "DocumentMoniker": "E:\\.NET project\\ResultProcessingSystem\\Models\\Domain\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Domain\\Student.cs",
+              "ToolTip": "E:\\.NET project\\ResultProcessingSystem\\Models\\Domain\\Student.cs",
+              "RelativeToolTip": "Models\\Domain\\Student.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-29T07:01:51.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\.NET project\\ResultProcessingSystem\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\.NET project\\ResultProcessingSystem\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAAC0AAAB3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-29T06:45:27.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminStudentController.cs",
+              "DocumentMoniker": "E:\\.NET project\\ResultProcessingSystem\\Controllers\\AdminStudentController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminStudentController.cs",
+              "ToolTip": "E:\\.NET project\\ResultProcessingSystem\\Controllers\\AdminStudentController.cs",
+              "RelativeToolTip": "Controllers\\AdminStudentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T07:14:55.331Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StudentDbContext.cs",
+              "DocumentMoniker": "E:\\.NET project\\ResultProcessingSystem\\Data\\StudentDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\StudentDbContext.cs",
+              "ToolTip": "E:\\.NET project\\ResultProcessingSystem\\Data\\StudentDbContext.cs",
+              "RelativeToolTip": "Data\\StudentDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-28T05:19:28.327Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

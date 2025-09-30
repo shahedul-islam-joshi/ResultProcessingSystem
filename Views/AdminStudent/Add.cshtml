@@ -1,0 +1,40 @@
+﻿@model ResultProcessingSystem.Models.ViewModel.AddStudentRequest
+
+@{
+    ViewData["Title"] = "Student List & Add Form";
+}
+
+<h2 class="text-center">Student Form</h2>
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">Add Student</div>
+    <div class="card-body">
+        <form asp-action="Add" method="post">
+            <div class="mb-3">
+                <label asp-for="Registration" class="form-label"></label>
+                <input asp-for="Registration" class="form-control" />
+                <span asp-validation-for="Registration" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Department" class="form-label"></label>
+                <input asp-for="Department" class="form-control" />
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Session" class="form-label"></label>
+                <input asp-for="Session" class="form-control" placeholder="2021-22" />
+                <span asp-validation-for="Session" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>

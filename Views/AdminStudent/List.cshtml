@@ -1,0 +1,42 @@
+﻿@model List<ResultProcessingSystem.Models.Domain.Student>
+
+@{
+    ViewData["Title"] = "Student List";
+}
+
+<h2 class="text-center mb-4">Student List</h2>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Id</th>
+            <th>Registration</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Session</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var student in Model)
+            {
+                <tr>
+                    <td>@student.Id</td>
+                    <td>@student.Registration</td>
+                    <td>@student.Name</td>
+                    <td>@student.Department</td>
+                    <td>@student.Session</td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="5" class="text-center text-danger">No Students Found</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Add" class="btn btn-primary">+ Add New Student</a>
