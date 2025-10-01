@@ -2,16 +2,19 @@
 using ResultProcessingSystem.Data;
 using ResultProcessingSystem.Models.Domain;
 using ResultProcessingSystem.Models.ViewModel;
+using Microsoft.EntityFrameworkCore;
+using ResultProcessingSystem.Repository;
+
 
 namespace ResultProcessingSystem.Controllers
 {
     public class AdminStudentController : Controller
     {
-        private readonly StudentDbContext _studentDbContext;
+        private readonly IStudentRepo studentRepo;
 
-        public AdminStudentController(StudentDbContext studentDbContext)
+        public AdminStudentController(IStudentRepo studentRepo)
         {
-            this._studentDbContext = studentDbContext;
+            this.studentRepo = studentRepo;
         }
 
         [HttpGet]
@@ -21,7 +24,7 @@ namespace ResultProcessingSystem.Controllers
         }
 
        [HttpPost]
-        public IActionResult Add(AddStudentRequest addStudentRequest)
+        public async Task<IActionResult> Add(AddStudentRequest addStudentRequest)
         {
             var student = new Student
             {
@@ -30,29 +33,28 @@ namespace ResultProcessingSystem.Controllers
                 Registration = addStudentRequest.Registration,
                 Session = addStudentRequest.Session
             };
-            _studentDbContext.Students.Add(student);
-            _studentDbContext.SaveChanges();
+            await studentRepo.AddAsync(student);
             return RedirectToAction("List");
         }
 
         [HttpGet]
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
-            var students = _studentDbContext.Students.ToList();
+            var students = await studentRepo.GetAllAsync();
             return View(students);
         }
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            var student = _studentDbContext.Students.FirstOrDefault(x => x.Id == id);
+            var student = await studentRepo.GetAsync(id);
             if (student != null)
             {
                 var editStudentRequest = new EditStudentRequest
                 {
-                    Id = id,
-                    Registration = student.Registration,
+                    Id = student.Id,
                     Name = student.Name,
                     Department = student.Department,
+                    Registration = student.Registration,
                     Session = student.Session
                 };
                 return View(editStudentRequest);
@@ -60,35 +62,30 @@ namespace ResultProcessingSystem.Controllers
             return View(null);
         }
         [HttpPost]
-        public IActionResult Edit(EditStudentRequest editStudentRequest)
+        public async Task<IActionResult> Edit(EditStudentRequest editStudentRequest)
         {
             var student = new Student
             {
+                Id=editStudentRequest.Id,
                 Name = editStudentRequest.Name,
                 Department = editStudentRequest.Department,
                 Registration = editStudentRequest.Registration,
                 Session = editStudentRequest.Session
             };
-            var existingStudent = _studentDbContext.Students.Find(editStudentRequest.Id);
-            if (existingStudent != null)
-            {
-                existingStudent.Session = editStudentRequest.Session;
-                existingStudent.Registration = editStudentRequest.Registration;
-                existingStudent.Name = editStudentRequest.Name;
-                existingStudent.Department = editStudentRequest.Department;
-                _studentDbContext.SaveChanges();
+            var updatedStudent = await studentRepo.UpdateAsync(student);
+            if (updatedStudent != null)
+            { 
                 return RedirectToAction("List");
             }
             return View(editStudentRequest);
         }
         [HttpPost]
-        public IActionResult Delete(EditStudentRequest editStudentRequest)
+        public async Task<IActionResult> Delete(EditStudentRequest editStudentRequest)
         {
-            var student = _studentDbContext.Students.Find(editStudentRequest.Id);
-            if (student != null)
+           var deletedStudent = await studentRepo.DeleteAsync(editStudentRequest.Id);
+            if (deletedStudent != null)
             {
-                _studentDbContext.Students.Remove(student);
-                _studentDbContext.SaveChanges();
+                return RedirectToAction("List");
             }
             return RedirectToAction("List");
         }

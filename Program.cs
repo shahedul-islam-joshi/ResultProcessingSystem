@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ResultProcessingSystem.Data;
+using ResultProcessingSystem.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StudentDbContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("StudentDbConnectionString")));
+
+
+//Dependency Injection For Repository
+builder.Services.AddScoped<IStudentRepo, StudentRepo>();
 
 var app = builder.Build();
 
