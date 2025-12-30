@@ -1,44 +1,64 @@
-﻿@model List<ResultProcessingSystem.Models.Domain.Student>
+﻿@model IEnumerable<ResultProcessingSystem.Models.Domain.Student>
 
 @{
     ViewData["Title"] = "Student List";
 }
 
-<h2 class="text-center mb-4">Student List</h2>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Student List</h2>
+        <a asp-action="Add" class="btn btn-primary">Add New Student</a>
+    </div>
 
-<table class="table table-bordered table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>Id</th>
-            <th>Registration</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Session</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null && Model.Any())
-        {
-            foreach (var student in Model)
-            {
-                <tr>
-                    <td>@student.Id</td>
-                    <td>@student.Registration</td>
-                    <td>@student.Name</td>
-                    <td>@student.Department</td>
-                    <td>@student.Session</td>
-                    <td><a asp-action="Edit" asp-controller="AdminStudent" asp asp-route-Id="@student.Id">Edit Record</a></td>
-                </tr>
-            }
-        }
-        else
-        {
-            <tr>
-                <td colspan="5" class="text-center text-danger">No Students Found</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<a asp-action="Add" class="btn btn-primary">+ Add New Student</a>
+    @if (Model == null || !Model.Any())
+    {
+        <div class="alert alert-warning">No student records found.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Photo</th>
+                        <th>Reg. No</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Email</th>
+                        <th>Session</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var student in Model)
+                    {
+                        <tr>
+                            <td class="text-center">
+                                @if (student.ProfilePicture != null)
+                                {
+                                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(student.ProfilePicture)"
+                                         style="width:50px; height:50px; object-fit:cover; border-radius:50%;" />
+                                }
+                                else
+                                {
+                                    <div class="bg-secondary text-white rounded-circle d-inline-block text-center"
+                                         style="width:50px; height:50px; line-height:50px; font-size: 12px;">
+                                        N/A
+                                    </div>
+                                }
+                            </td>
+                            <td>@student.Registration</td>
+                            <td>@student.Name</td>
+                            <td>@student.Department</td>
+                            <td>@student.Email</td>
+                            <td>@student.session</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@student.Id" class="btn btn-sm btn-info text-white">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

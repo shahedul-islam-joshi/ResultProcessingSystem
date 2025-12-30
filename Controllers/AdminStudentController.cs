@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ResultProcessingSystem.Data;
-using ResultProcessingSystem.Models.Domain;
-using ResultProcessingSystem.Models.ViewModel;
-using Microsoft.EntityFrameworkCore;
-using ResultProcessingSystem.Repository;
 
+using ResultProcessingSystem.Data;
+
+using ResultProcessingSystem.Models.Domain;
+
+using ResultProcessingSystem.Models.ViewModel;
+
+using Microsoft.EntityFrameworkCore;
+
+using ResultProcessingSystem.Repository;
 
 namespace ResultProcessingSystem.Controllers
 {
@@ -23,16 +27,34 @@ namespace ResultProcessingSystem.Controllers
             return View();
         }
 
-       [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Add(AddStudentRequest addStudentRequest)
         {
+            // Check if the form satisfies the [Required] attributes
+            if (!ModelState.IsValid)
+            {
+                return View(addStudentRequest);
+            }
+
             var student = new Student
             {
-                Name = addStudentRequest.Name,
-                Department = addStudentRequest.Department,
                 Registration = addStudentRequest.Registration,
-                Session = addStudentRequest.Session
+                Department = addStudentRequest.Department,
+                Name = addStudentRequest.Name,
+                Email = addStudentRequest.Email,
+                session = addStudentRequest.session,
+                Address = addStudentRequest.Address,
+                Gender = addStudentRequest.Gender,
+                Date = addStudentRequest.Date
             };
+
+            if (addStudentRequest.ProfileImage != null)
+            {
+                using var dataStream = new MemoryStream();
+                await addStudentRequest.ProfileImage.CopyToAsync(dataStream);
+                student.ProfilePicture = dataStream.ToArray();
+            }
+
             await studentRepo.AddAsync(student);
             return RedirectToAction("List");
         }
@@ -43,6 +65,7 @@ namespace ResultProcessingSystem.Controllers
             var students = await studentRepo.GetAllAsync();
             return View(students);
         }
+
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -52,41 +75,65 @@ namespace ResultProcessingSystem.Controllers
                 var editStudentRequest = new EditStudentRequest
                 {
                     Id = student.Id,
-                    Name = student.Name,
-                    Department = student.Department,
                     Registration = student.Registration,
-                    Session = student.Session
+                    Department = student.Department,
+                    Name = student.Name,
+                    Email = student.Email,
+                    session = student.session,
+                    Address = student.Address,
+                    Gender = student.Gender,
+                    Date = student.Date,
+                    ProfilePicture = student.ProfilePicture
                 };
                 return View(editStudentRequest);
             }
             return View(null);
         }
+
         [HttpPost]
         public async Task<IActionResult> Edit(EditStudentRequest editStudentRequest)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(editStudentRequest);
+            }
+
             var student = new Student
             {
-                Id=editStudentRequest.Id,
-                Name = editStudentRequest.Name,
-                Department = editStudentRequest.Department,
+                Id = editStudentRequest.Id,
                 Registration = editStudentRequest.Registration,
-                Session = editStudentRequest.Session
+                Department = editStudentRequest.Department,
+                Name = editStudentRequest.Name,
+                Email = editStudentRequest.Email,
+                session = editStudentRequest.session,
+                Address = editStudentRequest.Address,
+                Gender = editStudentRequest.Gender,
+                Date = editStudentRequest.Date
             };
-            var updatedStudent = await studentRepo.UpdateAsync(student);
-            if (updatedStudent != null)
-            { 
-                return RedirectToAction("List");
+
+            student.ProfilePicture = editStudentRequest.ProfilePicture;
+
+            if (editStudentRequest.ProfileImage != null)
+            {
+                using var dataStream = new MemoryStream();
+                await editStudentRequest.ProfileImage.CopyToAsync(dataStream);
+                student.ProfilePicture = dataStream.ToArray();
             }
-            return View(editStudentRequest);
-        }
-        [HttpPost]
-        public async Task<IActionResult> Delete(EditStudentRequest editStudentRequest)
-        {
-           var deletedStudent = await studentRepo.DeleteAsync(editStudentRequest.Id);
-            if (deletedStudent != null)
+
+            var updatedStudent = await studentRepo.UpdateAsync(student);
+
+            if (updatedStudent != null)
             {
                 return RedirectToAction("List");
             }
+
+            return View(editStudentRequest);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deletedStudent = await studentRepo.DeleteAsync(id);
             return RedirectToAction("List");
         }
     }

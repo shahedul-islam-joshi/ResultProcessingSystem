@@ -12,6 +12,7 @@ namespace ResultProcessingSystem.Repository
         {
             this._studentDbContext = studentDbContext;
         }
+
         public async Task<Student?> AddAsync(Student student)
         {
             await _studentDbContext.Students.AddAsync(student);
@@ -46,11 +47,21 @@ namespace ResultProcessingSystem.Repository
             var existingStudent = await _studentDbContext.Students.FindAsync(student.Id);
             if (existingStudent != null)
             {
-                existingStudent.Id = student.Id;
-                existingStudent.Name = student.Name;
-                existingStudent.Session = student.Session;
                 existingStudent.Registration = student.Registration;
                 existingStudent.Department = student.Department;
+                existingStudent.Name = student.Name;
+                existingStudent.Email = student.Email;
+                existingStudent.session = student.session;
+                existingStudent.Address = student.Address;
+                existingStudent.Gender = student.Gender;
+                existingStudent.Date = student.Date;
+
+                // Update picture only if a new one was uploaded
+                if (student.ProfilePicture != null)
+                {
+                    existingStudent.ProfilePicture = student.ProfilePicture;
+                }
+
                 await _studentDbContext.SaveChangesAsync();
                 return existingStudent;
             }

@@ -1,72 +1,117 @@
 ﻿@model ResultProcessingSystem.Models.ViewModel.EditStudentRequest
 
-@{
-    ViewData["Title"] = "Edit Student";
-}
+<div class="container mt-4 mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Edit Student Details</h2>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete Student</button>
+    </div>
 
-<h2 class="text-center">Edit Student</h2>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Edit" method="post" enctype="multipart/form-data">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ProfilePicture" />
 
-<div class="card mb-4">
-    <div class="card-header bg-warning text-dark">Update Student Information</div>
-    <div class="card-body">
-        <form asp-action="Edit" method="post">
-            <input type="hidden" asp-for="Id" />
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Registration Number</label>
+                        <input asp-for="Registration" class="form-control" />
+                        <span asp-validation-for="Registration" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Department</label>
+                        <input asp-for="Department" class="form-control" />
+                        <span asp-validation-for="Department" class="text-danger"></span>
+                    </div>
+                </div>
 
-            <div class="mb-3">
-                <label asp-for="Registration" class="form-label"></label>
-                <input asp-for="Registration" class="form-control" />
-                <span asp-validation-for="Registration" class="text-danger"></span>
-            </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Full Name</label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Email Address</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
 
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold">Date of Birth</label>
+                        <input asp-for="Date" type="date" class="form-control" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold">Gender</label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label fw-bold">Session</label>
+                        <input asp-for="session" class="form-control" />
+                        <span asp-validation-for="session" class="text-danger"></span>
+                    </div>
+                </div>
 
-            <div class="mb-3">
-                <label asp-for="Department" class="form-label"></label>
-                <input asp-for="Department" class="form-control" />
-                <span asp-validation-for="Department" class="text-danger"></span>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Address</label>
+                    <textarea asp-for="Address" class="form-control" rows="2"></textarea>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
 
-            <div class="mb-3">
-                <label asp-for="Session" class="form-label"></label>
-                <input asp-for="Session" class="form-control" placeholder="2021-22" />
-                <span asp-validation-for="Session" class="text-danger"></span>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Current Profile Picture</label>
+                    <div class="mt-2 mb-2">
+                        @if (Model.ProfilePicture != null)
+                        {
+                            <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.ProfilePicture)"
+                                 style="width:120px; height:120px; object-fit:cover; border-radius:10px; border: 1px solid #ddd;" />
+                        }
+                    </div>
+                    <label class="form-label fw-bold">Change Picture</label>
+                    <input asp-for="ProfileImage" type="file" class="form-control" accept="image/*" />
+                </div>
 
-            <div class="mt-3">
-                <button type="submit" class="btn btn-success">Update</button>
-                <a asp-action="List" class="btn btn-secondary">Cancel</a>
-                <!-- Delete button triggers modal -->
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
-                    Delete
-                </button>
-            </div>
-        </form>
+                <hr />
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success px-4">Update Student</button>
+                    <a asp-action="List" class="btn btn-outline-secondary px-4">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<!-- Delete Confirmation Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+@* Delete Modal *@
+<div class="modal fade" id="deleteModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
-                <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                Are you sure you want to delete <strong>@Model.Name</strong> (Registration: @Model.Registration)?
+                Are you sure you want to delete <strong>@Model.Name</strong>?
             </div>
             <div class="modal-footer">
-                <!-- Updated form to post to Delete action -->
-                <form asp-action="Delete" method="post">
-                    <input type="hidden" asp-for="Id" />
-                    <button type="submit" class="btn btn-danger">Yes, Delete</button>
-                </form>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+                    <button type="submit" class="btn btn-danger">Delete Permanently</button>
+                </form>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
