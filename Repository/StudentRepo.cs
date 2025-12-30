@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ResultProcessingSystem.Data;
+﻿using ResultProcessingSystem.Data;
 using ResultProcessingSystem.Models.Domain;
 
 namespace ResultProcessingSystem.Repository
